@@ -70,7 +70,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + getExitString() + "\n" + getItemsString();
     }
 
     /**
@@ -84,6 +84,16 @@ public class Room
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
             returnString += " " + exit;
+        }
+        return returnString;
+    }
+	
+	private String getItemsString()
+    {
+        String returnString = "Items:";
+        for(Item item : itemList)
+        {
+            returnString += " " + item.getDescription();
         }
         return returnString;
     }
