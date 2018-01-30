@@ -2,6 +2,7 @@
 
 import java.util.Set;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -22,7 +23,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-	private HashMap<String[], Room> items;		// stores the items in this room.
+	private ArrayList<Item> itemList;			// stores the items in this room.
 
     /**
      * Create a room described "description". Initially, it has
@@ -34,7 +35,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
-		items = new HashMap<>();
+		itemList = new ArrayList<>();
     }
 
     /**
@@ -45,6 +46,11 @@ public class Room
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
+    }
+	
+	public void addItem(Item item)
+    {
+        itemList.add(item);
     }
 
     /**

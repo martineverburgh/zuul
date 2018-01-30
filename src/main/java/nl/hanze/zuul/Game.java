@@ -16,10 +16,12 @@
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
-public class Game
-{
+public class Game {
+	
     private Parser parser;
     private Room currentRoom;
+	public Room outside, theater, pub, lab, office;
+    public Item key, box, map, food, drink, chocolate;
         
     /**
      * Create the game and initialise its internal map.
@@ -27,6 +29,8 @@ public class Game
     public Game() 
     {
         createRooms();
+		createItems();
+        placeItems();
         parser = new Parser();
     }
 
@@ -34,9 +38,7 @@ public class Game
      * Create all the rooms and link their exits together.
      */
     private void createRooms()
-    {
-        Room outside, theater, pub, lab, office;
-      
+    {  
         // create the rooms
         outside = new Room("outside the main entrance of the university");
         theater = new Room("in a lecture theater");
@@ -71,6 +73,16 @@ public class Game
         chocolate = new Item("chocolate", 200);
     }
 
+	public void placeItems()
+    {
+        outside.addItem(key);  
+        outside.addItem(chocolate);      
+        theater.addItem(box);
+        pub.addItem(map);
+        lab.addItem(food);
+        office.addItem(drink);
+    }
+	
     /**
      *  Main play routine.  Loops until end of play.
      */
