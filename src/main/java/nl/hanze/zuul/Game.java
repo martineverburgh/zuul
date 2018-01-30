@@ -60,6 +60,16 @@ public class Game
 
         currentRoom = outside;  // start game outside
     }
+	
+	private void createItems()
+    {
+        key = new Item("key", 50);
+        box = new Item("box", 2000);
+        map = new Item("map", 20);
+        food = new Item("food", 750);
+        drink = new Item("drink", 330);
+        chocolate = new Item("chocolate", 200);
+    }
 
     /**
      *  Main play routine.  Loops until end of play.
