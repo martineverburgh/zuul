@@ -22,6 +22,7 @@ public class Game {
     private Room currentRoom;
 	public Room outside, theater, pub, lab, office;
     public Item key, box, map, food, drink, chocolate;
+	public Item pickedUp;
         
     /**
      * Create the game and initialise its internal map.
@@ -66,7 +67,7 @@ public class Game {
 	private void createItems()
     {
         key = new Item("key", 50);
-        box = new Item("box", 2000);
+        box = new Item("box", 20_000);
         map = new Item("map", 20);
         food = new Item("food", 750);
         drink = new Item("drink", 330);
@@ -137,6 +138,10 @@ public class Game {
             case GO:
                 goRoom(command);
                 break;
+				
+			case PICKUP:
+				pickupItem(command);
+				break;
 
             case QUIT:
                 wantToQuit = quit(command);
@@ -186,6 +191,26 @@ public class Game {
             System.out.println(currentRoom.getLongDescription());
         }
     }
+	
+	private void pickupItem(Command command) {
+		if(!command.hasSecondWord()) {
+            System.out.println("Pickup what?");
+            return;
+        }
+		String secondWord = command.getSecondWord();
+		
+		for (Item item : currentRoom.getItemList()){
+			if (item.getDescription().equals(secondWord)){
+				pickedUp = item;
+				currentRoom.removeItem(item);
+				
+			}
+		}
+		
+		//pickedUp = item;
+
+        
+	}
 
     /** 
      * "Quit" was entered. Check the rest of the command to see

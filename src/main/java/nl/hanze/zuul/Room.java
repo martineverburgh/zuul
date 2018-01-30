@@ -52,7 +52,16 @@ public class Room
     {
         itemList.add(item);
     }
+	
+	public void removeItem(Item item)
+	{
+		itemList.remove(item);
+	}
 
+	public ArrayList<Item> getItemList(){
+		return itemList;
+	}
+	
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
