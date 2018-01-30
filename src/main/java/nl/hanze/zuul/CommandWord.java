@@ -1,4 +1,4 @@
-package nl.hanze.zuul;
+//package nl.hanze.zuul;
 
 /**
  * Representations for all the valid command words for the game

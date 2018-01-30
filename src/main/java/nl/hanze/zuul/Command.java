@@ -1,4 +1,5 @@
-package nl.hanze.zuul;
+//package nl.hanze.zuul;
+
 
 /**
  * This class is part of the "World of Zuul" application. 
